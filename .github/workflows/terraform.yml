@@ -15,8 +15,6 @@ jobs:
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2 # Upgraded version to avoid set-output warnings
-        with:
-          terraform_version: 1.9.7
 
       - name: Terraform Init
         run: terraform init
