@@ -5,7 +5,7 @@ aws_region = "us-east-1"
 vpc_cidr = "10.0.0.0/16"
 
 # Name of the VPC
-vpc_name = "dev-vpc"
+vpc_name = "demo-vpc"
 
 # Public Subnets CIDR blocks
 public_subnets = [
@@ -28,4 +28,4 @@ availability_zones = [
   "us-east-1c"
 ]
 
-gateway_name = "internet-gateway"
+gateway_name = "demo-gateway"

@@ -7,12 +7,12 @@ variable "aws_region" {
 
 variable "vpc_name" {
   description = "The name of the VPC"
-  default     = "assignment-vpc"
+  default     = "" //refer main.tf, default will be assignment-vpc
 }
 
 variable "gateway_name" {
   description = "The name of the Internet Gateway"
-  default     = "internet-gateway"
+  default     = "" // refer main.tf, default will be internet gateway
 }
 
 variable "vpc_cidr" {

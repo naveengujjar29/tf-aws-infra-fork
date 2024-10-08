@@ -13,7 +13,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "Public Route Table - - ${random_string.suffix.result}"
+    Name = "Public Route Table - ${random_string.suffix.result}"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_route_table_association" "public_subnet" {
 resource "aws_route_table" "private" {
   vpc_id = var.vpc_id
   tags = {
-    Name = "Private Route Table"
+    Name = "Private Route Table - ${random_string.suffix.result}"
   }
 }
 
