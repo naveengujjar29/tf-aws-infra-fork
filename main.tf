@@ -1,11 +1,14 @@
-# environments/dev/main.tf
 provider "aws" {
   region = var.aws_region
 }
 
+resource "random_string" "suffix" {
+  length = 6
+}
+
 module "vpc" {
   source       = "./modules/vpc"
-  vpc_name     = var.vpc_name
+  vpc_name     =  var.vpc_name != "" ? var.vpc_name : "assignment-vpc-${random_string.suffix.result}"
   cidr_block   = var.vpc_cidr
 }
 
@@ -20,6 +23,7 @@ module "subnets" {
 module "internet_gateway" {
   source = "./modules/internet-gateway"
   vpc_id = module.vpc.vpc_id
+  gateway_name = var.gateway_name != "" ? var.gateway_name : "assignment-igw-${random_string.suffix.result}"
 }
 
 module "route_tables" {

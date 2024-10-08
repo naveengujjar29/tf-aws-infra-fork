@@ -1,5 +1,9 @@
 # modules/route-tables/main.tf
 
+resource "random_string" "suffix" {
+  length = 6
+}
+
 resource "aws_route_table" "public" {
   vpc_id = var.vpc_id
 
@@ -9,7 +13,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "Public Route Table"
+    Name = "Public Route Table - - ${random_string.suffix.result}"
   }
 }
 
@@ -21,7 +25,6 @@ resource "aws_route_table_association" "public_subnet" {
 
 resource "aws_route_table" "private" {
   vpc_id = var.vpc_id
-
   tags = {
     Name = "Private Route Table"
   }

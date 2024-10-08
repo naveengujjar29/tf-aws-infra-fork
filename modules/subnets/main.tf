@@ -1,5 +1,9 @@
 # modules/subnets/main.tf
 
+resource "random_string" "suffix" {
+  length = 6
+}
+
 resource "aws_subnet" "public" {
   count             = length(var.public_subnets)
   vpc_id            = var.vpc_id
@@ -7,7 +11,7 @@ resource "aws_subnet" "public" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "Public Subnet ${count.index}"
+    Name = "Public Subnet - ${random_string.suffix.result} - ${count.index}"
   }
 }
 
@@ -18,6 +22,6 @@ resource "aws_subnet" "private" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "Private Subnet ${count.index}"
+    Name = "Private Subnet - - ${random_string.suffix.result} - ${count.index}"
   }
 }

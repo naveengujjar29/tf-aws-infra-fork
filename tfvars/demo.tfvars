@@ -27,3 +27,5 @@ availability_zones = [
   "us-east-1b",
   "us-east-1c"
 ]
+
+gateway_name = "internet-gateway"
