@@ -1,4 +1,4 @@
-# tf-aws-infra
+# tf-aws-infra assignment
 In this assignment, we are deploying the AWS infrastructure using the Terraform code.
 
 1) We have the file **dev.tfvars** for providing the dev environment values.
