@@ -27,4 +27,3 @@ terraform apply -var-file=tfvars/dev.tfvars
 terraform destroy -var-file=tfvars/dev.tfvars
 ```
 
-
