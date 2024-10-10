@@ -5,7 +5,7 @@ aws_region = "us-east-1"
 vpc_cidr = "10.0.0.0/16"
 
 # Name of the VPC
-vpc_name = "demo-vpc"
+vpc_name = "assignment-vpc"
 
 # Public Subnets CIDR blocks
 public_subnets = [
