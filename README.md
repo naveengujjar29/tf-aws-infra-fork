@@ -1,61 +1,78 @@
-# tf-aws-infra
-In this assignment, we are deploying the AWS infrastructure using the Terraform code.
+# Terraform AWS VPC Setup
 
-**Pre-requisite**
+This Terraform module sets up an AWS Virtual Private Cloud (VPC) along with an Internet Gateway and public/private subnets as specified in the variables.
 
+## Variables
+
+The following variables are used for the execution of the Terraform script:
+
+- **aws_region**: The AWS region where resources will be created.
+- **vpc_cidr**: CIDR block for the VPC.
+- **vpc_name**: The name of the VPC.
+- **public_subnets**: List of public subnet CIDRs.
+- **private_subnets**: List of private subnet CIDRs.
+- **availability_zones**: List of Availability Zones to be used.
+- **gateway_name**: The name of the Internet Gateway.
+
+## Example `terraform.tfvars`
+
+Below is an example of a `terraform.tfvars` file with sample values:
+
+```hcl
+# AWS region where resources will be created
+aws_region = "us-east-1"
+
+# CIDR block for the VPC
+vpc_cidr = "10.0.0.0/16"
+
+# Name of the VPC
+vpc_name = "demo-vpc"
+
+# Public Subnets CIDR blocks
+public_subnets = [
+  "10.0.1.0/24", # Availability Zone 1
+  "10.0.2.0/24", # Availability Zone 2
+  "10.0.3.0/24"  # Availability Zone 3
+]
+
+# Private Subnets CIDR blocks
+private_subnets = [
+  "10.0.4.0/24", # Availability Zone 1
+  "10.0.5.0/24", # Availability Zone 2
+  "10.0.6.0/24"  # Availability Zone 3
+]
+
+# Availability Zones to be used
+availability_zones = [
+  "us-east-1a",
+  "us-east-1b",
+  "us-east-1c"
+]
+
+gateway_name = "demo-gateway"
 ```
-To deploy the resources on AWS, you have to first install the aws cli on your system.
-Then, you have to configure the profile using which you want to interact with AWS.
-It will require the Access Key and Secret Key.
-command to run: aws configure --profile dev
-```
 
-1) We have the file **dev.tfvars** for providing the dev environment values.
+### Terraform Commands
+To deploy the infrastructure, follow these steps:
 
-2) **demo.tfvars** can be used to define the environment variables for demo or production environemnt.
+Ensure you have Terraform installed.
 
-Use the below commands to run the project with the environment variable values.
+Clone this repository or download the Terraform configuration files.
 
-### Initialize
+Create a demo.tfvars file with your desired values as shown above.
+
+Initialize Terraform:
+
 ```bash
 terraform init
 ```
 
-### Plan the deployment
+Plan the deployment:
 ```bash
-terraform plan -var-file=tfvars/dev.tfvars
+terraform plan -var-file="demo.tfvars" -out=<planname>
 ```
 
-### Apply
+Apply the changes:
 ```bash
-terraform apply -var-file=tfvars/dev.tfvars
+terraform apply -var-file="demo.tfvars"
 ```
-
-### Destroy
-```bash
-terraform destroy -var-file=tfvars/dev.tfvars
-```
-
-##### Use the below commands to run the project without the environment variable values and generate with random values.
-### Initialize
-```bash
-terraform init
-```
-
-### Plan the deployment
-```bash
-terraform plan
-```
-
-### Apply
-```bash
-terraform apply
-```
-
-### Destroy
-```bash
-terraform destroy
-```
- 
-
-
